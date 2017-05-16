@@ -92,7 +92,7 @@ public class Pro1_Maze {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Pro1_Maze p = new Pro1_Maze();
+		new Pro1_Maze();
 		int r, c;
 		here = entry;
 		printMaze(maze);
