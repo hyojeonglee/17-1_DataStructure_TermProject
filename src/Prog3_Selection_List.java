@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class LinkedList {
 	Node first;
 	static int size;
@@ -128,13 +130,16 @@ class LinkedList {
 }
 
 public class Prog3_Selection_List {
-	static Integer[] input = {75, 43, 99, 12, 11, 8, 42, 24, 96, 7, 15, 3, 26, 49, 48};
-	
 	public static void main(String[] args) {
-		LinkedList list = new LinkedList();
+		Scanner scan = new Scanner(System.in);
+		System.out.println("[정렬할 요소 입력(공백으로 구분)]");
+		String input = scan.nextLine();
+		String[] temp = input.split(" ");
 		
-		for (Integer i : input) {
-			list.insertRear(i);
+		LinkedList list = new LinkedList();
+		for (String s : temp) {
+			Integer value = Integer.parseInt(s);
+			list.insertRear(value);
 		}
 		System.out.println("[리스트 생성 완료]");
 		list.print_list();
