@@ -16,13 +16,13 @@ public class Prog2_Selection_Sort {
 		}
 	}
 	
-	void swap(int[] array, int first, int second) {
+	void swap(int first, int second) {
 		int temp = array[first];
 		array[first] = array[second];
 		array[second] = temp;
 	}
 	
-	void sort(int[] array) {
+	void sort() {
 		for (int i = 0 ; i < array.length ; i++) {
 			int min = i;
 			for (int j = i+1 ; j < array.length ; j++) {
@@ -30,7 +30,7 @@ public class Prog2_Selection_Sort {
 					min = j;
 			}
 			if (min != i)
-				swap(array, i, min);
+				swap(i, min);
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class Prog2_Selection_Sort {
 			System.out.printf("%d ", i);
 		System.out.println();
 		
-		s.sort(s.array);
+		s.sort();
 		System.out.println("[Á¤·Ä ÈÄ]");
 		for (int i : s.array)
 			System.out.printf("%d ", i);
