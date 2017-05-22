@@ -1,7 +1,6 @@
 class LinkedList {
 	Node first;
-	Node trace;
-	int size;
+	static int size;
 	
 	public LinkedList() {
 		first = new Node(null);
@@ -20,7 +19,8 @@ class LinkedList {
 	
 	Node getNode(int index) {
 		if (index < 0 || index >= size) {
-			System.out.println("Error");
+			System.out.println("Error : getNode");
+			return null;
 		}
 		
 		Node node = first.next;
@@ -30,16 +30,16 @@ class LinkedList {
 		return node;
 	}
 	
-	void addFirst(Integer val) {
+	void insertFront(Integer val) {
 		Node node = new Node(val);
 		node.next = first.next;
 		first.next = node;
 		size++;
 	}
 	
-	void add(int index, Integer val) {
+	void insertMiddle(int index, Integer val) {
 		if (index == 0) {
-			addFirst(val);
+			insertFront(val);
 			return;
 		}
 		Node post = getNode(index - 1);
@@ -51,32 +51,96 @@ class LinkedList {
 		size++;
 	}
 	
-	public void addLast(Integer val) {
-		add(size, val);
+	void insertRear(Integer val) {
+		insertMiddle(size, val);
 	}
 	
-	public void add(Integer val) {
-		addLast(val);
+	Integer deleteFront() {
+		Node frontNode = getNode(0);
+		first.next = frontNode.next;
+		size--;
+		return frontNode.value;
 	}
 	
-	void delete() {
+	Integer deleteMiddle(int index) {
+		if (index < 0 || index >= size) {
+			System.out.println("Error : deleteMiddle");
+			return null;
+		}
+		else if (index == 0) {
+			return deleteFront();
+		}
 		
+		Node post = getNode(index - 1);
+		Node deleteNode = post.next;
+		Node nextNode = deleteNode.next;
+		post.next = nextNode;
+		size--;
+		
+		return deleteNode.value;
+	}
+	
+	Integer deleteRear() {
+		return deleteMiddle(size - 1);
+	}
+	
+	int size() {
+		return size;
 	}
 	
 	void print_list() {
+		Node node = first.next;
 		
+		if (node != null) {
+			System.out.printf("( %d", node.value);
+			node = node.next;
+			while(node != null) {
+				System.out.printf(", %d", node.value);
+				node = node.next;
+			}
+		}
+		System.out.println(" )");
+	}
+	
+	void swapNode(int first, int second) {
+		if (first < 0 || first >= size || second < 0 || second >= size) {
+			System.out.println("Error : swapNode");
+			return;
+		}
+		
+		Integer firstValue = deleteMiddle(first);
+		Integer secondValue = deleteMiddle(second - 1);
+		insertMiddle(first, secondValue);
+		insertMiddle(second, firstValue);
+	}
+	
+	void selectionSortList() {
+		for (int i = 0 ; i < size ; i++) {
+			int min = i;
+			for (int j = i+1 ; j < size ; j++) {
+				if (getNode(j).value < getNode(min).value)
+					min = j;
+			}
+			if (min != i)
+				swapNode(i, min);
+		}
 	}
 }
 
 public class Prog3_Selection_List {
 	static Integer[] input = {75, 43, 99, 12, 11, 8, 42, 24, 96, 7, 15, 3, 26, 49, 48};
-
-	public Prog3_Selection_List() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		LinkedList list = new LinkedList();
+		
+		for (Integer i : input) {
+			list.insertRear(i);
+		}
+		System.out.println("[리스트 생성 완료]");
+		list.print_list();
+		
+		System.out.println("[리스트 정렬 완료]");
+		list.selectionSortList();
+		list.print_list();
 	}
 }
