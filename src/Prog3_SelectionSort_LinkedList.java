@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 class LinkedList {
 	Node first;
-	static int size;
+	int size;
 	
 	public LinkedList() {
 		first = new Node(null);
@@ -129,7 +129,7 @@ class LinkedList {
 	}
 }
 
-public class Prog3_Selection_List {
+public class Prog3_SelectionSort_LinkedList {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("[정렬할 요소 입력(공백으로 구분)]");

@@ -3,7 +3,7 @@ class StackObject {
 	public short c;
 }
 
-public class Pro1_Maze {
+public class Prog1_Maze {
 	final static int MAX_STACK_SIZE = 100;
 	static StackObject[] stack;
 	static int top;
@@ -18,7 +18,7 @@ public class Pro1_Maze {
 			{'1', '1', '1', '1', '1', '1'}
 	};
 	
-	public Pro1_Maze() {
+	public Prog1_Maze() {
 		stack = new StackObject[MAX_STACK_SIZE];
 		here = new StackObject();
 		entry = new StackObject();
@@ -92,7 +92,7 @@ public class Pro1_Maze {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Pro1_Maze();
+		new Prog1_Maze();
 		int r, c;
 		here = entry;
 		printMaze(maze);
@@ -115,7 +115,6 @@ public class Pro1_Maze {
 				here = pop();
 			printMaze(maze);
 			printStack();
-			// getch();
 		}
 		System.out.println("¼º°ø!");
 	}

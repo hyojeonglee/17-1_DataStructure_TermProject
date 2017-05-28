@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class Prog2_Selection_Sort {
+public class Prog2_SelectionSort {
 	int[] array = null;
 	
-	public Prog2_Selection_Sort() {
+	public Prog2_SelectionSort() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("[정렬할 요소 입력(공백으로 구분)]");
 		String input = scan.nextLine();
@@ -35,7 +35,7 @@ public class Prog2_Selection_Sort {
 	}
 	
 	public static void main(String[] args) {
-		Prog2_Selection_Sort s = new Prog2_Selection_Sort();
+		Prog2_SelectionSort s = new Prog2_SelectionSort();
 		
 		System.out.println("[정렬 전]");
 		for (int i : s.array)
